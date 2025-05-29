@@ -135,7 +135,13 @@ fn get_all_children_of_task(tasklist: &TaskList, parent: usize) -> Vec<Task> {
 }
 
 fn task_has_children(tasklist: &TaskList, id: usize) -> bool {
-    return get_all_children_of_task(tasklist, id).len() > 0;
+    for i in 0..tasklist.tasks.len() {
+        if tasklist.tasks[i].id == id {
+            return get_all_children_of_task(&tasklist, i).len() > 0;
+        }
+    }
+
+    return false;
 }
 
 fn get_start_and_end_of_children(
@@ -164,6 +170,8 @@ fn fit_task_size_to_children(
     tasklist: &mut TaskList,
     id: usize,
 ) -> (Option<DateTime<Local>>, Option<DateTime<Local>>) {
+    println!("{id}");
+
     let mut children = get_all_children_of_task(tasklist, id);
 
     let mut start_time: Option<DateTime<Local>> = None;
@@ -174,8 +182,12 @@ fn fit_task_size_to_children(
 
         if task_has_children(tasklist, children[i].id) {
             dates = fit_task_size_to_children(tasklist, children[i].id);
-            children[i].start_time = dates.0;
-            children[i].due_date = dates.1;
+            for j in 0..tasklist.tasks.len() {
+                if tasklist.tasks[j].id == children[i].id {
+                    tasklist.tasks[j].start_time = dates.0;
+                    tasklist.tasks[j].due_date = dates.1;
+                }
+            }
         }
 
         if let Some(x) = dates.0 {
@@ -411,7 +423,16 @@ fn main() {
             if let Some(x) = args.parent_id {
                 println!("Fitting parent size to children");
 
-                fit_task_size_to_children(&mut task_list, x);
+                let mut actual_id = x;
+
+                loop {
+                    if task_list.tasks[actual_id].parent == None {
+                        break;
+                    }
+                    actual_id = task_list.tasks[actual_id].parent.unwrap();
+                }
+
+                fit_task_size_to_children(&mut task_list, actual_id);
             }
 
             fs::write(meta_path, serde_json::to_string(&task_list).unwrap())

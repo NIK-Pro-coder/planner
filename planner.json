@@ -1,0 +1,74 @@
+{
+	"tasks": [
+		{
+			"name": "test",
+			"points": 10,
+			"id": 0,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": "2025-06-27T12:00:00+02:00",
+			"parent": null,
+			"resources": []
+		},
+		{
+			"name": "test2",
+			"points": 10,
+			"id": 1,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": null,
+			"parent": 0,
+			"resources": []
+		},
+		{
+			"name": "test3",
+			"points": 10,
+			"id": 2,
+			"complete": false,
+			"due_date": null,
+			"start_time": "2025-06-27T12:00:00+02:00",
+			"parent": 0,
+			"resources": []
+		},
+		{
+			"name": "test4",
+			"points": 10,
+			"id": 3,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": null,
+			"parent": 1,
+			"resources": []
+		},
+		{
+			"name": "test4",
+			"points": 10,
+			"id": 4,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": null,
+			"parent": 1,
+			"resources": []
+		},
+		{
+			"name": "test4",
+			"points": 10,
+			"id": 5,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": null,
+			"parent": 1,
+			"resources": []
+		},
+		{
+			"name": "test4",
+			"points": 10,
+			"id": 6,
+			"complete": false,
+			"due_date": "2025-06-29T12:00:00+02:00",
+			"start_time": null,
+			"parent": 1,
+			"resources": []
+		}
+	]
+}
