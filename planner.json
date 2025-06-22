@@ -1,0 +1,18 @@
+{
+	"tasks": [
+		{
+			"name": "Water the dog",
+			"points": 20,
+			"id": 0,
+			"complete": false,
+			"due_date": null
+		},
+		{
+			"name": "Water the cat",
+			"points": 20,
+			"id": 1,
+			"complete": false,
+			"due_date": "2025-06-23T12:11:00+02:00"
+		}
+	]
+}
